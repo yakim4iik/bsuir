@@ -1,0 +1,76 @@
+laba1=[*
+	sc_node_struct->section_subject_domain_of_pharmacy;;
+
+	section_subject_domain_of_pharmacy<=nrel_section_decomposition:{
+		section_subject_domain_of_finished_disage_forms_pharmacy(*<-sc_node_struct;;*);
+                section_subject_domain_of_production_pharmacy(*<-sc_node_struct;;*);
+                section_subject_domain_of_hospital_pharmacy(*<-sc_node_struct;;*);
+                section_subject_domain_of_interhospital_pharmacy(*<-sc_node_struct;;*);
+                section_subject_domain_of_health_care_institutions_pharmacy(*<-sc_node_struct;;*);
+                section_subject_domain_of_homeopathic_pharmacy(*<-sc_node_struct;;*)
+	};;
+	section_subject_domain_of_pharmacy->rrel_key_sc_element:subject_domain_of_pharmacy(*<-sc_node_struct;;*);
+	        concept_pharmacy(*<-sc_node_class;;*);
+                concept_drug(*<-sc_node_class;;*);
+                concept_department(*<-sc_node_class;;*);
+                concept_suppliers(*<-sc_node_class;;*);
+                concept_buyers(*<-sc_node_class;;*);
+                concept_salesman(*<-sc_node_class;;*);
+                nrel_drug_price(*<-sc_node_norole_relation;;*);
+                nrel_name_of_drug(*<-sc_node_norole_relation;;*);
+                nrel_name_of_department(*<-sc_node_norole_relation;;*);
+                nrel_name_of_suppliers(*<-sc_node_norole_relation;;*);
+                nrel_drug_expiration_date(*<-sc_node_norole_relation;;*);;
+
+        section_subject_domain_of_pharmacy => nrel_main_idtf:
+        	[Раздел.Предметная область аптек]
+        	(* <- lang_ru;; *);;
+
+	section_subject_domain_of_pharmacy => nrel_main_idtf:
+		[Section.Subject domain of pharmacy]
+        	(* <- lang_en;; *);;
+   
+	concept_drug<-rrel_not_maximum_studied_object_class:subject_domain_of_pharmacy;;    
+	concept_department<-rrel_not_maximum_studied_object_class:subject_domain_of_pharmacy;;
+        concept_suppliers<-rrel_not_maximum_studied_object_class:subject_domain_of_pharmacy;;
+       concept_buyers<-rrel_not_maximum_studied_object_class:subject_domain_of_pharmacy;;
+        section_subject_domain_of_pharmacy<-non_atomic_section;;
+
+	subject_domain_of_pharmacy => nrel_main_idtf:
+        	[Предметная область аптек]
+        	(* <- lang_ru;; *);;
+    
+    	subject_domain_of_pharmacy => nrel_main_idtf:
+        	[Subject domain of pharmacy]
+        	(* <- lang_;; *);;
+
+    	subject_domain_of_pharmacy=>nrel_private_subject_domain:
+		subject_domain_of_finished_disage_forms_pharmacy(*<-sc_node_struct;;*);
+                subject_domain_of_production_pharmacy(*<-sc_node_struct;;*);
+                subject_domain_of_hospital_pharmacy(*<-sc_node_struct;;*);
+                subject_domain_of_interhospital_pharmacy(*<-sc_node_struct;;*);
+                subject_domain_of_health_care_institutions_pharmacy(*<-sc_node_struct;;*);
+                subject_domain_of_homeopathic_pharmacy(*<-sc_node_struct;;*);;  
+
+	subject_domain_of_pharmacy<=nrel_private_subject_domain:subject_domain_of_medicine(*<-sc_node_struct;;*);;
+
+        subject_domain_of_pharmacy->rrel_maximum_studied_object_class:concept_pharmacy;;
+      
+        subject_domain_of_pharmacy->rrel_explored_relation:
+        	nrel_drug_price(*<-sc_node_norole_relation;;*);
+                nrel_name_of_drug(*<-sc_node_norole_relation;;*);
+                nrel_name_of_department(*<-sc_node_norole_relation;;*);
+                nrel_name_of_suppliers(*<-sc_node_norole_relation;;*);
+                nrel_drug_expiration_date(*<-sc_node_norole_relation;;*);;
+
+    	subject_domain_of_pharmacy<-subject_domain;;
+*];;		
+
+
+
+
+
+
+
+
+

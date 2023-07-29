@@ -1,0 +1,3 @@
+/Users/ilyayakimovic/Desktop/ppois/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ilyayakimovic/Desktop/ppois/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ilyayakimovic/Desktop/ppois/cmake-build-debug/CMakeFiles/ppois.dir

@@ -1,0 +1,53 @@
+lab4_2.1=[*
+
+concept_rhombus <- sc_node_class;;
+concept_side <- sc_node_class;;
+concept_parallelogramm <- sc_node_class;;
+concept_property <- sc_node_class;;
+
+nrel_inclusion <- sc_node_norole_realtion;;
+nrel_side <- sc_node_norole_realtion;;
+
+concept_rhombus => nrel_main_idtf:[rhombus](*<- lang_en;;*);;
+concept_rhombus => nrel_main_idtf:[ромб](*<- lang_ru;;*);;
+
+definition -> ...(*
+    ->rrel_key_sc_element:concept_rhombus;;
+    <=nrel_sc_text_translation: ...
+           (*
+                   ->rrel_example:
+                          [Ромб - это параллелограмм у которого все стороны равны.](*<-lang_ru;;*);;             *);;
+
+    =>nrel_main_idtf:[Опр. Ромб](*<-lang_ru;;*);;
+    =>nrel_using_constants:{
+        concept_parallelogramm;
+        concept_side
+    };;
+*);;
+
+statement -> ...(*
+    ->rrel_key_sc_element:concept_rhombus;;
+    <=nrel_sc_text_translation: ...
+           (*
+                   ->rrel_example:
+                          [Ромб обладает всеми свойствами параллелограмма](*<lang_ru;;*);;
+           *);;
+
+    =>nrel_main_idtf:[Утв. Об ромбе](*<-lang_ru;;*);;
+
+    =>nrel_using_constants:{
+        concept_parallelogramm;
+        concept_property
+    };;
+*);;
+
+concept_parallelogramm=>nrel_inclusion:concept_rhombus;;
+
+concept_rhombus -> concept_parallelogramm;;
+concept_parallelogramm-> concept_ABCD;;
+
+concept_ABCD => nrel_side:concept_AB;
+=>nrel_side:concept_BC;
+=>nrel_side:concept_CD;
+=>nrel_side:concept_AD;
+*];;
