@@ -1,0 +1,100 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-center{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.svg-button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.edit-button{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.rounded-button {
+  border-radius: 20px;
+  min-width: 100px;
+  max-width: fit-content;
+}
+
+.same-width-input {
+  width: 180px;
+}
+
+.my-form-line {
+  margin: 15px 0;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.error-message {
+  color: red;
+  height: 20px;
+}
+
+header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.page-heading {
+  font-size: 1.5rem;
+  margin: 1rem 2rem 2rem;
+
+}
+
+.simple-link {
+  text-decoration: none;
+  color: white;
+}
+
+.hover-disable:hover {
+  color: white;
+}
+
+.error-not-found {
+  margin: 10px;
+}
