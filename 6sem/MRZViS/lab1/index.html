@@ -1,0 +1,125 @@
+<!-- //////////////////////////////////////////////////////////////////////////////////////
+// Лабораторная работа 1 по дисциплине МРЗвИС
+// Выполнена студентами группы 121703
+// БГУИР Титлов И.Д., Якимович И.В.
+// Вариант 3 - алгоритм вычисления произведения пары 4-разрядных чисел
+// умножением со старших разрядов со сдвигом множимого вправо;
+// 22.02.2024
+// Использованные материалы:
+// https://www.w3schools.com/js/ - методические материалы по JS
+// https://ru.wikipedia.org/wiki/ - описание работы конвейера
+// https://habr.com/ru/post/182002/ - реализация конвейера компьютерных процессоров
+// http://dit.isuct.ru/IVT/BOOKS/ARCHITECTURE/arch2/GLAVA_7.HTM - описание работы процессорного конвейера
+// http://perscom.ru/2012-01-20-09-26-05/8-konveer-komand/19-konveer-komand - описание работы процессорного конвейера -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #e7e7e7;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        input {
+            border: solid DimGray;
+            border-radius: 10px;
+            margin-left: 10px;
+            padding: 5px 10px;
+        }
+
+        #InputVector1,
+        #InputVector2,
+        #Answer {
+            font-weight: bold;
+            border-radius: 10px;
+            margin-left: 10px;
+            padding: 5px 10px;
+        }
+
+        #Build {
+            font-weight: bold;
+            border-radius: 10px;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: lightgray;
+            cursor: pointer;
+        }
+
+        #Build:hover {
+            background: DimGray;
+        }
+
+        #Table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #Table td,
+        #Table th {
+            border: 1px solid #e7e7e7;
+            padding: 10px;
+            text-align: center;
+            font-family: "Arial", sans-serif;
+            font-weight: bold;
+            background-color: #adafb1;
+        }
+
+        #Table th:first-child,
+        #Table td:first-child {
+            background-color: #adafb1;
+        }
+
+        #ErrorMas {
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 5px 10px;
+            background-color: #000000;
+            color: #ffffff;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <label for="InputPairFirstElem">Вектор А:</label>
+        <input id="InputPairFirstElem" placeholder="Введите значение" />
+
+        <label for="InputPairSecondElem">Вектор В:</label>
+        <input id="InputPairSecondElem" placeholder="Введите значение" />
+
+        <button id="Build" onclick="main()">Старт</button>
+
+        <div id="InputVector1"></div>
+        <div id="InputVector2"></div>
+        <div id="Answer"></div>
+        <div id="ErrorMas"></div>
+    </div>
+    <table id="Table" border="1"></table>
+
+    <script src="Constants.js"></script>
+    <script src="OperationBlocks.js"></script>
+    <script src="Reader.js"></script>
+    <script src="Printer.js"></script>
+    <script src="Pipeline.js"></script>
+</body>
+
+</html>
