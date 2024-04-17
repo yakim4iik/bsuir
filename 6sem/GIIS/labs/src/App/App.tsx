@@ -43,7 +43,7 @@ function App() {
 						</button>
 						<button
 							className={selectedLab === 4 ? 'selected' : ''}
-							onClick={() => handleLabChange(3)}
+							onClick={() => handleLabChange(4)}
 						>
 							4
 						</button>
