@@ -4,11 +4,11 @@ import Point from '../drawingData'
 import './Lab3.css'
 
 function Lab3() {
-	const [segmentEnds, setSegmentEnds] = useState<Point[]>([])
+	const segmentEnds = useRef<Point[]>([])
 	const svgRef = useRef<SVGSVGElement | null>(null)
 	const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>('hermite')
-	const [color, setColor] = useState<string>('rgba(255, 255, 255)')
-	const [cellSize, setCellSize] = useState<number>(1)
+	const color = useRef<string>('rgba(255, 255, 255)')
+	const cellSize = useRef<number>(1)
 
 	useEffect(() => {
 		const storedAlgorithm = localStorage.getItem('selectedAlgorithm')
@@ -25,7 +25,9 @@ function Lab3() {
 	const clearSvg = () => {
 		const svg = svgRef.current
 		if (svg) {
-			svg.innerHTML = ''
+			while (svg.firstChild) {
+				svg.removeChild(svg.firstChild)
+			}
 		}
 	}
 
@@ -38,13 +40,13 @@ function Lab3() {
 		pt.y = event.clientY - svg.getBoundingClientRect().top
 
 		const point: Point = {
-			x: Math.floor(pt.x / cellSize),
-			y: Math.floor(pt.y / cellSize),
+			x: Math.floor(pt.x / cellSize.current),
+			y: Math.floor(pt.y / cellSize.current),
 			color: { r: 102, g: 0, b: 51 },
 			opacity: 0,
 		}
-		setSegmentEnds(prevSegmentEnds => [...prevSegmentEnds, point])
-		if (segmentEnds.length >= 2) drawCurve()
+		segmentEnds.current.push(point)
+		if (segmentEnds.current.length >= 2) drawCurve()
 	}
 
 	const hermiteAlgorithm = () => {
@@ -52,12 +54,14 @@ function Lab3() {
 		console.log('hermite')
 		clearSvg()
 		if (svg) {
-			for (let i = 0; i < segmentEnds.length - 1; i++) {
-				const p0 = segmentEnds[i]
-				const p1 = segmentEnds[i + 1]
-				const t0 = i > 0 ? (p1.x - segmentEnds[i - 1].x) / 2 : 0
+			for (let i = 0; i < segmentEnds.current.length - 1; i++) {
+				const p0 = segmentEnds.current[i]
+				const p1 = segmentEnds.current[i + 1]
+				const t0 = i > 0 ? (p1.x - segmentEnds.current[i - 1].x) / 2 : 0
 				const t1 =
-					i < segmentEnds.length - 2 ? (segmentEnds[i + 2].x - p0.x) / 2 : 0
+					i < segmentEnds.current.length - 2
+						? (segmentEnds.current[i + 2].x - p0.x) / 2
+						: 0
 
 				let d = ''
 				for (let t = 0; t <= 1; t += 0.01) {
@@ -93,13 +97,16 @@ function Lab3() {
 		const svg = svgRef.current
 		console.log('bezier')
 		if (svg) {
-			if (segmentEnds.length >= 4 && (segmentEnds.length - 1) % 3 === 0) {
+			if (
+				segmentEnds.current.length >= 4 &&
+				(segmentEnds.current.length - 1) % 3 === 0
+			) {
 				clearSvg()
-				for (let i = 0; i < segmentEnds.length - 1; i += 3) {
-					const p0 = segmentEnds[i]
-					const p1 = segmentEnds[i + 1]
-					const p2 = segmentEnds[i + 2]
-					const p3 = segmentEnds[i + 3]
+				for (let i = 0; i < segmentEnds.current.length - 1; i += 3) {
+					const p0 = segmentEnds.current[i]
+					const p1 = segmentEnds.current[i + 1]
+					const p2 = segmentEnds.current[i + 2]
+					const p3 = segmentEnds.current[i + 3]
 
 					const iterations = 10000
 					let d = ''
@@ -142,11 +149,14 @@ function Lab3() {
 		const svg = svgRef.current
 		console.log('b-spline')
 		if (svg) {
-			if (segmentEnds.length >= 4) {
+			if (segmentEnds.current.length >= 4) {
 				clearSvg()
 
 				// Convert the segmentEnds data to the format expected by d3.js
-				const points = segmentEnds.map(point => ({ x: point.x, y: point.y }))
+				const points = segmentEnds.current.map(point => ({
+					x: point.x,
+					y: point.y,
+				}))
 
 				// Set up scales for x and y coordinates
 				const xScale = d3
@@ -210,20 +220,20 @@ function Lab3() {
 		if (svg) {
 			svg.innerHTML = ''
 		}
-		window.location.reload()
+		segmentEnds.current = []
 	}
 
 	return (
 		<div className='Lab3'>
 			<div className='MainArea'>
 				<svg id='svg' ref={svgRef} className='Svg3' onClick={handleMouseDown}>
-					{segmentEnds.map((point, index) => (
+					{segmentEnds.current.map((point, index) => (
 						<circle
 							key={index}
-							cx={point.x * cellSize}
-							cy={point.y * cellSize}
+							cx={point.x * cellSize.current}
+							cy={point.y * cellSize.current}
 							r={3}
-							fill={color}
+							fill={color.current}
 						/>
 					))}
 				</svg>

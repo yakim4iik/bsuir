@@ -3,13 +3,15 @@ import { useState } from 'react'
 import Lab1 from '../Lab1/Lab1'
 import Lab2 from '../Lab2/Lab2'
 import Lab3 from '../Lab3/Lab3'
+import Lab4 from '../Lab4/Lab4'
 import Lab5 from '../Lab5/Lab5'
 import Lab6 from '../Lab6/Lab6'
+import Lab7 from '../Lab7/Lab7'
 
 import './App.css'
 
 function App() {
-	const [selectedLab, setSelectedLab] = useState(6)
+	const [selectedLab, setSelectedLab] = useState(7)
 
 	const handleLabChange = (labNumber: number) => {
 		setSelectedLab(labNumber)
@@ -40,6 +42,12 @@ function App() {
 							3
 						</button>
 						<button
+							className={selectedLab === 4 ? 'selected' : ''}
+							onClick={() => handleLabChange(3)}
+						>
+							4
+						</button>
+						<button
 							className={selectedLab === 5 ? 'selected' : ''}
 							onClick={() => handleLabChange(5)}
 						>
@@ -51,13 +59,21 @@ function App() {
 						>
 							6
 						</button>
+						<button
+							className={selectedLab === 7 ? 'selected' : ''}
+							onClick={() => handleLabChange(7)}
+						>
+							7
+						</button>
 					</div>
 				</div>
 				{selectedLab === 1 && <Lab1 />}
 				{selectedLab === 2 && <Lab2 />}
 				{selectedLab === 3 && <Lab3 />}
+				{selectedLab === 4 && <Lab4 />}
 				{selectedLab === 5 && <Lab5 />}
 				{selectedLab === 6 && <Lab6 />}
+				{selectedLab === 7 && <Lab7 />}
 			</div>
 		</div>
 	)
