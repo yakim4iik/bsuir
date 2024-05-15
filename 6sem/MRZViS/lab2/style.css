@@ -1,0 +1,115 @@
+body {
+	font-family: 'Open Sans', serif;
+	font-size: 14px;
+	background-color: #e7e7e7;
+}
+
+.main__title {
+	text-align: center;
+	margin: 2% 26%;
+}
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.enter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.enter label {
+	font-weight: bold;
+}
+
+.enter input[type='text'] {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.time {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.time label {
+	font-weight: bold;
+}
+
+.time input[type='text'] {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	width: 200px;
+	height: 50px;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: black;
+}
+
+.matrix-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 20px;
+	margin-bottom: 20px;
+}
+
+.matrix-container label {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th,
+td {
+	border: 1px solid rgb(69, 69, 69);
+	padding: 7px;
+	text-align: center;
+}
+
+input {
+	margin-left: 10px;
+	width: 45px;
+}
+
+table {
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+.bold {
+	font-weight: bold;
+}
